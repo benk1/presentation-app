@@ -1,0 +1,31 @@
+{
+  "name": "exercise",
+  "version": "1.0.0",
+  "description": "first trial APP OF NODE",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "yarn install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "yarn start --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"yarn run server\" \" cd client && yarn && yarn start\"",
+    "heroku-postbuild": "cd client  yarn install --prefix client && yarn run build --prefix client"
+  },
+  "author": "Bernard Kakengi",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "gravatar": "^1.8.0",
+    "history": "^4.7.2",
+    "joi": "^14.3.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.15",
+    "passport": "^0.4.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  }
+}

@@ -1,0 +1,368 @@
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router,Switch, Link } from "react-router-dom";
+import Route from "react-router-dom/Route";
+import axios from 'axios';
+
+import './App.css';
+import Presenters from './components/Presenters';
+import AddPresenter from './components/AddPresenter';
+import EditPresenter from './components/EditPresenter';
+
+
+class App extends Component {
+  state = {
+        students:[]
+  }
+
+    componentDidMount () {
+        axios.get('/students').then((response) => {
+            console.log('componentDidMount');
+            this.setState({
+                students:response.data
+            })
+        })
+    }
+
+    getStudent = (id) => {
+   
+      let matchedStudentIndex ;
+      this.state.students.forEach((stud,index) => {
+        if( stud._id == id){
+          matchedStudentIndex = index;
+        }
+      });
+      const  machedStudData= this.state.students[matchedStudentIndex];
+      return {index:matchedStudentIndex, data:machedStudData};
+    }
+
+    onEdit = (student,index) => {
+      axios
+      .put (`/students/${student.id}`, student)
+      .then (response => {
+       console.log ('I a m responding for edit',response);
+       let newStdents = this.state.students;
+       newStdents.splice(index,1,student);
+       this.setState({
+          students: newStdents,  
+      });
+   
+     })
+     .catch (err => console.log (err));
+     //const updatedVal = this.props.students.map((dat,i) => {
+         
+   
+  
+   }
+  
+
+  render() {  
+    console.log('i am state',this.state.students)
+    return (
+      <Router>
+        <div className= "App">
+       <h1>React with Node</h1>
+       <Route exact  path="/students/edit/:id"  render={props => <EditPresenter {...props} onEdit={this.onEdit} student={this.getStudent(props.match.params.id)}/>} />
+       <Route exact  path="/students/add" component={AddPresenter} />
+       <Route exact  path="/students" render={props=> <Presenters {...props} students={this.state.students} />} />
+
+       {/*<Link to="/">Presentation</Link>*/}
+      
+       
+       {/*<Presenters />*/}
+      </div>
+
+      </Router> 
+      
+    );
+  }
+} 
+
+export default App;
+/*<Router>
+          <div>
+            <Route exact path="/" component={Posts} />
+
+ADD PRESENTER.JS BACKUP
+
+import React, { Component } from "react";
+import axios from "axios";
+//import { Link } from "react-router-dom";
+//import { BrowserRouter } from 'react-router-dom';
+
+class AddPresenter extends Component {
+  state = {
+    presentername: "",
+    evaluatorname: "",
+    topic: "",
+    articleurl: "",
+    presentationdat: "",
+    textarea: ""
+  };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    //console.log(this.state)
+    e.preventDefault();
+    //this.props.history.push('/presenters');
+    //console.log (this.state);
+    axios
+      .post("/presenters", this.state)
+      .then(response => {
+        this.props.history.push("/presenters");
+        console.log(this.props);
+      })
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <div className="form-group">
+        <h3 style={{ marginTop: "30px" }} className="addpresenter">
+          Add New Presenter
+        </h3>
+        <form onSubmit={this.handleSubmit} method="POST">
+          <div className="first-row">
+            <label htmlFor="presenterName">Presenter Name:</label>
+            <input
+              type="text"
+              name="presentername"
+              value={this.state.presentername}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="evaluatorName">Evaluator Name:</label>
+            <input
+              type="text"
+              name="evaluatorname"
+              ref="evaluatorname"
+              value={this.state.evaluatorname}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="presentation">Presentation Topic:</label>
+            <input
+              type="text"
+              name="topic"
+              ref="topic"
+              value={this.state.topic}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div className="second-row">
+            <label htmlFor="articleUri">Article URI:</label>
+            <input
+              type="text"
+              name="articleurl"
+              ref="articleurl"
+              value={this.state.articleurl}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="presentationDate">Presentation Date:</label>
+            <input
+              type="date"
+              name="presentationdat"
+              ref="presentationdat"
+              value={this.state.presentationdat}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div className="first-column">
+            <label htmlFor="keywords">Key Words:</label>
+            <input
+              type="text"
+              name="keyWords"
+              ref="keyWords"
+              value={this.state.keyWords}
+              onChange={this.handleChange}
+            />
+
+            <textarea
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              rows="10"
+              cols="30"
+              name="message"
+              placeholder="Write  Summary!"
+            />
+          </div>
+          <br />
+
+          <button> Add Presenter</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default AddPresenter;
+
+EDIT PRESENTER.JS--------08/04/2019
+import React, {Component} from 'react';
+import axios from 'axios';
+//import axios from 'axios'
+//import { Link } from "react-router-dom";
+//import { BrowserRouter as Router } from 'react-router-dom';
+
+class EditPresenter extends Component {
+
+  state = {
+    id: this.props.presenter.data._id,
+    presentername: this.props.presenter.data.presentername,
+    evaluatorname: this.props.presenter.data.evaluatorname,
+    topic:this.props.presenter.data.topic,
+    articleurl:this.props.presenter.data.articleurl,
+    presentationdat: this.props.presenter.data.presentationdat,
+    textarea: this.props.presenter.data.textarea
+  }
+
+
+
+
+  handleChange = (e) => {
+      this.setState({
+          [e.target.name]:e.target.value
+      })
+  }
+
+  handleSubmit = (e) => {
+      e.preventDefault();
+      this.props.onEdit(this.state, this.props.presenter.index);
+      console.log('benweree',this.props.presenter.index)
+      this.props.history.push('/presenters');
+      
+     
+  }
+  
+ 
+  render () {
+    //console.log('wewe',this.state)
+
+    return (
+      
+      
+      <div className="form">
+         <h3 className="addpresenter">Edit Presenter</h3>
+        <form onSubmit = {this.handleSubmit} method="PUT">
+       
+        <div className="first-row">
+          <label>Presenter Name:</label>
+          <input type="text" 
+          name="presentername" 
+          value={this.state.presentername}
+          onChange = {this.handleChange}
+           />
+
+           <label>Evaluator Name:</label>
+           <input type="text" 
+          name="evaluatorname" 
+          ref="evaluatorname"
+          value={this.state.evaluatorname}
+          onChange = {this.handleChange}
+           />
+
+         <label>Presentation Topic:</label>
+          <input type="text" 
+          name="topic" 
+          ref='topic'
+          value={this.state.topic}
+          onChange = {this.handleChange}
+           />
+        </div>
+
+        <div className="second-row">
+          <label>Article URI:</label>
+          <input type="text" 
+           name="articleurl" 
+           ref='articleurl'
+           value={this.state.articleurl}
+           onChange = {this.handleChange}
+           />
+
+          <label>Presentation Date:</label>
+          <input type="text" 
+          name="presentationdat" 
+          ref='presentationdat'
+          value={this.state.presentationdat}
+          onChange = {this.handleChange}
+           />
+        
+        </div>
+
+        <div className="first-column">
+          <label>Key Words:</label>
+          <input type="text" 
+          name="keyWords" 
+          ref='keyWords'
+          value={this.state.keyWords}
+          onChange = {this.handleChange}
+           />
+
+           <textarea
+           type = "text"
+           value={this.state.value}
+            onChange={this.handleChange}
+            rows="10"
+            cols="60"
+            name="message"
+            placeholder="Write  Summary!"
+          />
+        </div>
+        <br />
+
+         <button className="editButton"> Update Presenter</button>  
+        </form>
+       
+
+      </div>
+    );
+  }
+}
+
+export default EditPresenter;
+
+
+            <Route path="/post/:id" component={Post} />
+            <Route  path="/newpost" component={FormPost} />
+          </div>
+        </Router>*/
+
+EDIT FUNCTION ROUTER
+function editPresenter(req, res,next) {
+      const _id = req.params.id;
+      Presenter.findOneAndUpdate({_id}, (err, presenter) => {
+        (presenter.presentername = req.body.presentername), (presenter.evaluatorname = req.body.evaluatorname),
+        (presenter.topic = req.body.topic),(presenter. articleurl = req.body. articleurl), 
+        (presenter.presentationdat = req.body.presentationdat) ;
+
+        presenter.save(err => {
+          if (err) {
+            res.status(404).send(err);
+          }
+          console.log('Saved');
+          res.send(`presenter with id ${_id} has been updated`);
+        });
+      });
+    }
+DELETE FUNCTION ROUTER
+function deletePresenter(req, res, next) {
+  //const _id = req.params.id;
+  console.log("deletedObject", _id);
+  Presenter.findOneAndDelete({ _id:req.params.id }, (err, presenter) => {
+    // // {_id:req.params._id}
+    if (err) {
+      res.status(404).send("Unable to delete");
+    }
+    //res.send(`A presenter with id ${_id} has been removed.`);
+    //res.json(presenter);
+  });
+}

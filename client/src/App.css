@@ -1,0 +1,150 @@
+.App {
+  text-align: center;
+}
+body{
+  font-family: Raleway;
+  color: black;  /*#555*/
+  /*background: #ff5252;*/
+  /* margin: 10px 30px; */
+  /*text-align: center;*/
+  /* padding: 20px 0px; */
+}
+
+
+.header{
+  display: inline-block;
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+  background-color: #111;
+  list-style-type: none;
+}
+.add,.presentations,.home{
+  display: inline-block;
+  padding: 20px;
+}
+
+
+/*form{
+  max-width: 350px;
+  margin: 30px auto;
+}*/
+
+/*.form{
+  display: flex;
+  align-items: baseline;
+ 
+}*/
+
+.first-row{
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  
+  /*justify-content: center;*/
+}
+
+/*.second-row{
+  display: flex;
+  justify-content: space-around;
+  margin-right: 250px;
+  justify-content: center;
+}*/
+
+/*.first-column{
+  display: flex;
+  flex-direction: column;
+}*/
+
+/*.group{
+  display: inline-block;
+}*/
+.presenters{
+  display: flex;
+  border: 2px solid black;
+  width: 890px;
+  height: 60px;
+  line-height: 60px;
+  background: white;
+  color: black;
+  font-size: 18px;
+  padding: 20px;
+  margin-right: 180px;
+ 
+}
+.presentername{
+  display: flex;
+  /*flex-direction: column;*/
+  font-weight: bold;
+  
+}
+input{
+  /*display: block;
+  width: 300px;
+  margin: 20px 0;
+  padding: 1px;
+  border-radius: 4px;*/
+  border: 1px solid #ddd;
+}
+label{
+  font-weight: bold;
+  
+}
+button{
+  float: left;
+  background: green;
+  border: 0;
+  padding: 5px 10px;
+  color: #fff;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+  height:  50px;
+}
+
+.addpresenter{
+ text-align: center;
+}
+.item-view{
+  background: gray;
+  margin: 10px;
+  
+  
+}
+
+.item-edit{
+  margin: 10px;
+ 
+background: black;
+}
+
+.item-delete{
+  background: red;
+  margin: 10px;
+  
+}
+Link{
+  font-size: 20px;
+}
+.bigDiv{
+  margin-left: 80px;
+}
+.presenter{
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  font-size: 20px;
+  text-align: left;
+  justify-content: space-between;
+}
+.staticDiv{
+  display: flex;
+  justify-content: space-between;
+}
+h2{
+  margin-top: 40px;
+}
+.badge{
+  font-size: 20px;
+}
