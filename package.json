@@ -6,7 +6,7 @@
   "scripts": {
     "client-install": "yarn install --prefix client",
     "start": "node server.js",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "client": "yarn start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"yarn run server\" \" cd client && yarn && yarn start\"",
