@@ -29,9 +29,9 @@ function showSinglePresenter(req, res, next) {
     if (err) {
       res.status(404).send("An error");
     }
-    if (presenter.length < 1) {
-      res.send("A presenter with that id was not found");
-    }
+    // if (presenter.length < 1) {
+    //   res.send("A presenter with that id was not found");
+    // }
     res.json(presenter);
   });
 }
