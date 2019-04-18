@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require('path');
+const path = require("path");
 
 //const routes = require('./server/routes/api/presenters');
 //Set up express app
@@ -19,7 +19,7 @@ app.use("/", presenterRouter);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
   app.get("*", (req, res, next) =>
-    res.sendFile(path.join(__dirname, "/client/build/index.html"))
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
   );
 }
 
@@ -67,13 +67,17 @@ if(result.error) {
 
 const url = "mongodb://ben:ben123@ds054479.mlab.com:54479/students_1_db";
 
-mongoose.connect(url, { useNewUrlParser: true }, err => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("Database is connected");
+mongoose.connect(
+  process.env.MONGODB_URI || url,
+  { useNewUrlParser: true },
+  err => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Database is connected");
+    }
   }
-});
+);
 //get a list of all presenters from the db
 // app.get ('/presenters', (req, res,next) => {
 //   Presenter.find ({}, (err, presenters) => {
