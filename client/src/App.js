@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   getPresentersFromServer = () => {
-    axios.get("presenters").then(response => {
+    axios.get("/presenters").then(response => {
       console.log(response);
       this.setState({
         presenters: response.data
