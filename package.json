@@ -6,11 +6,11 @@
   "scripts": {
     "client-install": "yarn install --prefix client",
     "start": "node server.js",
-    "server": "node server.js",
+    "server": "nodemon server.js",
     "client": "yarn start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"yarn run server\" \" cd client && yarn && yarn start\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --prefix client  && yarn run build --prefix client "
+    "heroku-postbuild": "cd client  yarn install --prefix client && yarn run build --prefix client"
   },
   "author": "Bernard Kakengi",
   "license": "ISC",
