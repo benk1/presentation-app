@@ -3,7 +3,6 @@ import axios from "axios";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 //import { Link } from "react-router-dom";
 //import { BrowserRouter } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 
 class AddPresenter extends Component {
   state = {
