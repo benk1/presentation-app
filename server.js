@@ -14,12 +14,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use('/',require('./server/routes/api/presenters'));
 
-app.use( presenterRouter);
+app.use("/presenters", presenterRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use( express.static(path.join(__dirname, "client/build")));
   app.get("*", (req, res, next) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
   );
 }
 
