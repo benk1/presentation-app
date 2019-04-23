@@ -22,7 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     axios.get("/presenters").then(response => {
-      //console.log('componentDidMount',response.data);
+      console.log('componentDidMount',response.data);
       this.setState({
         presenters: response.data
       });

@@ -28,8 +28,8 @@ class Presenters extends Component {
 
     // );
 
-    axios.delete(`/presenters/${presenter._id}`).then(response =>
-      this.props.getPresentersFromServer()
+    axios.delete(`/presenters/${presenter._id}`).then(
+      response => this.props.getPresentersFromServer()
       //console.log ('I a m response to delete',response.data);
       // this.setState({
       //   presenters: [
