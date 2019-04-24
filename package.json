@@ -10,7 +10,7 @@
     "client": "yarn start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"yarn run server\" \" cd client && yarn && yarn start\"",
-    "heroku-postbuild": "cd client  yarn install --prefix client && yarn run build --prefix client"
+    "heroku-postbuild": "cd client &&  yarn  --prefix client && yarn run build --prefix client"
   },
   "author": "Bernard Kakengi",
   "license": "ISC",
@@ -23,17 +23,15 @@
     "history": "^4.7.2",
     "joi": "^14.3.0",
     "jsonwebtoken": "^8.4.0",
+    "mongodb": "^3.2.3",
     "mongoose": "^5.3.15",
     "passport": "^0.4.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
-  "engines":{
+  "engines": {
     "node": "10.12.0",
     "npm": "6.7.0",
     "yarn": "1.15.2"
-    
-    
-    
   }
 }

@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
 
 //const routes = require('./server/routes/api/presenters');
 //Set up express app
@@ -14,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use('/',require('./server/routes/api/presenters'));
 
-app.use("/presenters", presenterRouter);
+app.use("/", presenterRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use( express.static(path.join(__dirname, "client/build")));
@@ -69,6 +71,9 @@ const url = "mongodb://ben:ben123@ds054479.mlab.com:54479/students_1_db";
 
 mongoose.connect(
   process.env.MONGODB_URI || url,
+  {
+    useMongoClient: true
+  },
   { useNewUrlParser: true },
   err => {
     if (err) {
