@@ -1,31 +1,31 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
-body{
-  font-family: Raleway;
-  color: black;  /*#555*/
-  /*background: #ff5252;*/
-  /* margin: 10px 30px; */
-  /*text-align: center;*/
-  /* padding: 20px 0px; */
-}
-
-
-.header{
-  display: inline-block;
-  color: #FFF;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 20px;
-  display: inline-block;
-  background-color: #111;
-  list-style-type: none;
-}
-.add,.presentations,.home{
-  display: inline-block;
-  padding: 20px;
+body {
+	font-family: sans-serif; /*Raleway*/
+	color: black; /*#555*/
+	/*background: #ff5252;*/
+	/* margin: 10px 30px; */
+	/*text-align: center;*/
+	/* padding: 20px 0px; */
 }
 
+.header {
+	display: inline-block;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 20px;
+	display: inline-block;
+	background-color: #111;
+	list-style-type: none;
+}
+.add,
+.presentations,
+.home {
+	display: inline-block;
+	padding: 20px;
+}
 
 /*form{
   max-width: 350px;
@@ -38,11 +38,11 @@ body{
  
 }*/
 
-.first-row{
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-  
-  /*justify-content: center;*/
+.first-row {
+	/*display: flex;*/
+	/*flex-wrap: wrap;*/
+
+	/*justify-content: center;*/
 }
 
 /*.second-row{
@@ -60,91 +60,113 @@ body{
 /*.group{
   display: inline-block;
 }*/
-.presenters{
-  display: flex;
-  border: 2px solid black;
-  width: 890px;
-  height: 60px;
-  line-height: 60px;
-  background: white;
-  color: black;
-  font-size: 18px;
-  padding: 20px;
-  margin-right: 180px;
- 
+.presenters {
+	display: flex;
+	border: 2px solid black;
+	width: 890px;
+	height: 60px;
+	line-height: 60px;
+	background: white;
+	color: black;
+	font-size: 18px;
+	padding: 20px;
+	margin-right: 180px;
 }
-.presentername{
-  display: flex;
-  /*flex-direction: column;*/
-  font-weight: bold;
-  
+.presentername {
+	display: flex;
+	/*flex-direction: column;*/
+	font-weight: bold;
 }
-input{
-  /*display: block;
+input {
+	/*display: block;
   width: 300px;
   margin: 20px 0;
   padding: 1px;
   border-radius: 4px;*/
-  border: 1px solid #ddd;
+	border: 1px solid #ddd;
 }
-label{
-  font-weight: bold;
-  
+label {
+	font-weight: bold;
 }
-button{
-  float: left;
-  background: green;
-  border: 0;
-  padding: 5px 10px;
-  color: #fff;
-  display: inline-block;
-  border-radius: 4px;
-  cursor: pointer;
-  height:  50px;
-}
-
-.addpresenter{
- text-align: center;
-}
-.item-view{
-  background: gray;
-  margin: 10px;
-  
-  
+button {
+	float: left;
+	background: green;
+	border: 0;
+	padding: 5px 10px;
+	color: #fff;
+	display: inline-block;
+	border-radius: 4px;
+	cursor: pointer;
+	height: 50px;
 }
 
-.item-edit{
-  margin: 10px;
- 
-background: black;
+.addpresenter {
+	text-align: center;
+}
+.item-view {
+	background: gray;
+	margin: 10px;
 }
 
-.item-delete{
-  background: red;
-  margin: 10px;
-  
+.item-edit {
+	margin: 10px;
+
+	background: black;
 }
-Link{
-  font-size: 20px;
+
+.item-delete {
+	background: red;
+	margin: 10px;
 }
-.bigDiv{
-  margin-left: 80px;
+link {
+	font-size: 20px;
 }
-.presenter{
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-  font-size: 20px;
-  text-align: left;
-  justify-content: space-between;
+.bigDiv {
+	margin-left: 80px;
 }
-.staticDiv{
-  display: flex;
-  justify-content: space-between;
+.presenter {
+	display: flex;
+	flex-direction: column;
+	margin-top: 40px;
+	font-size: 20px;
+	text-align: left;
+	justify-content: space-between;
 }
-h2{
-  margin-top: 40px;
+.staticDiv {
+	display: flex;
+	justify-content: space-between;
 }
-.badge{
-  font-size: 20px;
+h2 {
+	margin-top: 40px;
+}
+.badge {
+	font-size: 20px;
+}
+.showNumberOfPresentations {
+	text-align: center;
+	margin-bottom: 30px;
+	color: black;
+}
+h3 {
+	font-weight: bold;
+}
+.presenters {
+	/*width: 800px;
+  margin: 0 auto;*/
+	border: none;
+}
+.headerStyle {
+	background: #333, color #fff;
+}
+.addPresenter {
+	text-decoration: none;
+	font-size: 20px;
+	color: blue;
+	margin-bottom: 20px;
+
+	/* style={{ textDecoration: 'none', fontSize: '20px', color: 'blue', marginBottom: '20px' }} */
+}
+textarea {
+    height: 4em;
+    width: 50em;
 }
