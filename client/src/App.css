@@ -161,7 +161,7 @@ h3 {
 .addPresenter {
 	text-decoration: none;
 	font-size: 20px;
-	color: blue;
+	color: white;
 	margin-bottom: 20px;
 
 	/* style={{ textDecoration: 'none', fontSize: '20px', color: 'blue', marginBottom: '20px' }} */

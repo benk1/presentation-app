@@ -5,48 +5,62 @@ import axios from 'axios';
 class AddPresentation extends Form {
 	state = {
 		data: {
-			presentername: '',
-			evaluatorname: '',
+			presenterName: '',
+			evaluatorName: '',
 			topic: '',
-			articleurl: '',
-			presentationdat: '',
+			articleUrl: '',
+			presentationDate: '',
 			textarea: '',
 		},
-		newObj: [],
+		presenters: [],
 		errors: {},
 	};
 
 	schema = {
-		presentername: Joi.string()
+		presenterName: Joi.string()
 			.required()
 			.label('Presenter Name'),
-		evaluatorname: Joi.string()
+		evaluatorName: Joi.string()
 			.required()
 			.label('Evaluator Name'),
 		topic: Joi.string()
 			.required()
 			.label('Presentation Topic'),
-		articleurl: Joi.string()
+		articleUrl: Joi.string()
 			.required()
 			.label('Article URI'),
-		presentationdat: Joi.string()
+		presentationDate: Joi.string()
 			.required()
 			.label('Presentation Date'),
 		textarea: Joi.string()
 			.required()
-			.label('Text Area'),
+			.label('Summary'),
 	};
+
+	// handleAdd = async () => {
+	// 	try {
+	// 		const { data: presenter } = await axios.post(
+	// 			'/presenters',
+	// 			this.state.data
+	// 		);
+	// 		const presenters = [...this.props.getPresentersFromServer, presenter];
+	// 		this.setState({ presenters });
+	// 	} catch (error) {
+	// 		console.log('Something went wrong to add', error);
+	// 	}
+	// };
 
 	doSubmit = () => {
 		console.log('submitted');
 		//call the server
-		axios
-			.post('/presenters', this.state.data)
-			.then((response) => {
-				this.setState({ newObj: response.data.data });
-				console.log('my response', this.state.newObj);
-			})
-			.catch((err) => console.log(err));
+		this.props.onAdd(this.state.data);
+		// axios
+		// 	.post('/presenters', this.state.data)
+		// 	.then((response) => {
+		// 		this.setState({ newObj: response.data.data });
+		// 		console.log('my created response', this.state.newObj);
+		// 	})
+		// 	.catch((err) => console.log(err));
 		this.props.history.push('/presenters');
 	};
 	render() {
@@ -56,13 +70,13 @@ class AddPresentation extends Form {
 
 				<form onSubmit={this.handleSubmit}>
 					{this.renderInput(
-						'presentername',
+						'presenterName',
 						'Presenter Name',
 						'text',
 						'Presenter Name'
 					)}
 					{this.renderInput(
-						'evaluatorname',
+						'evaluatorName',
 						'Evaluator Name',
 						'text',
 						'Evaluator Name'
@@ -73,9 +87,9 @@ class AddPresentation extends Form {
 						'text',
 						'Presentation Topic'
 					)}
-					{this.renderInput('articleurl', 'Article URI', 'url', 'Article URI')}
+					{this.renderInput('articleUrl', 'Article URI', 'url', 'Article URI')}
 					{this.renderInput(
-						'presentationdat',
+						'presentationDate',
 						'Presentation Date',
 						'date',
 						'Presentation Date'
@@ -85,7 +99,6 @@ class AddPresentation extends Form {
 							'textarea',
 							'Write  Summary',
 							'text',
-							'Write  Summary',
 							'Write  Summary'
 						)}
 					</div>
