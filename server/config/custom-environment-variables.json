@@ -1,0 +1,5 @@
+{
+	"jwtPrivateKey": "presentation_jwtPrivateKey",
+	"db": " presentation_db",
+	"name": "My Express Presentations App"
+}

@@ -1,0 +1,6 @@
+{
+	"jwtPrivateKey": "unsecureKey",
+	"db": "mongodb://localhost/presenters",
+	"port": "3000",
+	"requiresAuth": false
+}
